@@ -17,12 +17,7 @@
       </thead>
       <tbody>
 
-        <tr *ngFor="let contact of filteredContacts | paginate: { itemsPerPage: 5, currentPage: currentPage }"
-            style="cursor:pointer;" appHoverElement
-            [ngClass]="{'table-danger': selectedContact?.id === contact.id }"
-            (mouseover)="onMouseOver(contact)"
-            (mouseout)="onMouseOut(contact)"
-            (click)="showDetails(contact)">
+        <tr *ngFor="let contact of filteredContacts | paginate: { itemsPerPage: 5, currentPage: currentPage }">
           <td>{{ contact.id }}</td>
           <td>{{ contact.firstName }}</td>
           <td>{{ contact.lastName }}</td>
@@ -41,12 +36,4 @@
   <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 
 
-<div class="card" style="text-align: center;">
-  <div class="card-header" *ngIf="selectedContact" style="font-weight: bold;">
-    User Details - {{ selectedContact.firstName }} {{ selectedContact.lastName }}
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-</div>
-</div>
+
