@@ -1,0 +1,9 @@
+tbody tr:hover {
+  background-color: #003366;  /* Dark Blue color */
+  color: white;
+}
+
+.table-hovered {
+  background-color: #003366 !important; /* Keep dark blue when selected */
+  color: white;
+}

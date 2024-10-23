@@ -1,0 +1,52 @@
+
+<div class="container">
+<button type="button" class="btn btn-success" (click)="addNContact()">New</button>&nbsp;
+<th>Filter</th>
+<input type="text" class="form-control mb-4" [(ngModel)]="searchTerm" placeholder="Search Contacts..." />
+<div style="max-height: 400px; overflow-y: auto;">
+    <table class="table  table-striped table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let contact of filteredContacts | paginate: { itemsPerPage: 5, currentPage: currentPage }"
+            style="cursor:pointer;" appHoverElement
+            [ngClass]="{'table-danger': selectedContact?.id === contact.id }"
+            (mouseover)="onMouseOver(contact)"
+            (mouseout)="onMouseOut(contact)"
+            (click)="showDetails(contact)">
+          <td>{{ contact.id }}</td>
+          <td>{{ contact.firstName }}</td>
+          <td>{{ contact.lastName }}</td>
+          <td>{{ contact.email }}</td>
+          <td>
+            <button (click)="onEdit(contact)" class="btn btn-primary btn-sm">Edit</button>
+          </td>
+          <td>
+            <button (click)="onDelete(contact.id)" class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+
+
+<div class="card" style="text-align: center;">
+  <div class="card-header" *ngIf="selectedContact" style="font-weight: bold;">
+    User Details - {{ selectedContact.firstName }} {{ selectedContact.lastName }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+</div>
+</div>
