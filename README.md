@@ -43,7 +43,7 @@ Before you begin, ensure you have the following tools installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Utkars-code/Angular-client.git
+   git clone https://github.com/Utkars-code/client-contact.git
 
    git clone https://github.com/Utkars-code/contact-server.git
    ```
